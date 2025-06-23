@@ -79,3 +79,18 @@ The output is written to the `out` directory. To preview the static build locall
 npx serve -s out -l 3000
 ```
 
+## Linting
+
+The project uses the built-in Next.js ESLint configuration. Before running the
+lint command make sure dependencies are installed:
+
+```bash
+npm install
+```
+
+Then run:
+
+```bash
+npm run lint
+```
+
