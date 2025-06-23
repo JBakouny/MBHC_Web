@@ -41,7 +41,7 @@ export default function OwnerCommentsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-pink-50">
       <Header />
       <div className="container mx-auto px-4 py-8 space-y-6">
         <h1 className="font-heading text-4xl font-bold">Pending Comments</h1>
