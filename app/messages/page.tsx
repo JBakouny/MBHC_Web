@@ -70,6 +70,7 @@ export default function MessagesPage() {
     })
 
     if (error) {
+      console.error('Send message error:', error)
       toast.error('Failed to send message')
     } else {
       toast.success('Message sent')
