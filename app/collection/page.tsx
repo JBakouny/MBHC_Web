@@ -201,12 +201,17 @@ export default function CollectionPage() {
       {/* Category */}
       <div className="space-y-2">
         <Label>Category</Label>
-        <Select value={filters.category || ''} onValueChange={(value) => handleFilterChange('category', value)}>
+        <Select
+          value={filters.category || ''}
+          onValueChange={(value) =>
+            handleFilterChange('category', value === 'all' ? '' : value)
+          }
+        >
           <SelectTrigger>
             <SelectValue placeholder="All categories" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All categories</SelectItem>
+            <SelectItem value="all">All categories</SelectItem>
             {categories.map((category) => (
               <SelectItem key={category.id} value={category.id}>
                 {category.name}
