@@ -10,7 +10,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { Comment } from '@/lib/types'
-import { 
+import {
   Crown, 
   Sparkles, 
   Heart, 
@@ -21,6 +21,7 @@ import {
   Scissors,
   Users
 } from 'lucide-react'
+import { toast } from 'sonner'
 
 const SUPABASE_ASSET_URL =
   'https://zrjthioylovvarhpelym.supabase.co/storage/v1/object/public/website-assets'
@@ -81,8 +82,11 @@ export default function HomePage() {
       rating,
     })
     if (!error) {
+      toast.success('Review submitted for approval')
       setContent('')
       setRating(5)
+    } else {
+      toast.error('Failed to submit review')
     }
   }
 
@@ -324,12 +328,6 @@ export default function HomePage() {
                 <Link href="/contact">
                   <Calendar className="mr-2 h-5 w-5" />
                   Book Consultation
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-white text-white hover:bg-white hover:text-primary" asChild>
-                <Link href="/auth/register">
-                  <Users className="mr-2 h-5 w-5" />
-                  Create Account
                 </Link>
               </Button>
             </div>

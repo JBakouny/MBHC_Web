@@ -80,6 +80,8 @@ export function Header() {
       toast.error('Error signing out')
     } else {
       toast.success('Signed out successfully')
+      setUser(null)
+      setProfile(null)
       router.push('/')
     }
   }
