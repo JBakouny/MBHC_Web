@@ -1,7 +1,15 @@
 const {Builder, By, until} = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
+const { spawn } = require('child_process');
+
+function wait(ms) {
+  return new Promise(res => setTimeout(res, ms));
+}
 
 async function run() {
+  const server = spawn('npx', ['--yes', 'serve', '-s', 'out', '-l', '3000'], { stdio: 'inherit' });
+  await wait(5000);
+
   const options = new chrome.Options();
   options.addArguments('--headless=new');
   options.addArguments('--no-sandbox');
@@ -31,6 +39,7 @@ async function run() {
     console.log('Message send test executed');
   } finally {
     await driver.quit();
+    server.kill();
   }
 }
 
