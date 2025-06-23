@@ -7,7 +7,7 @@ const SUPABASE_ASSET_URL =
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-pink-50">
       <Header />
       <section className="container mx-auto px-4 py-16 space-y-16">
         <div className="text-center space-y-4">
