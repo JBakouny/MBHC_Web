@@ -22,6 +22,9 @@ import {
   Users
 } from 'lucide-react'
 
+const SUPABASE_ASSET_URL =
+  'https://zrjthioylovvarhpelym.supabase.co/storage/v1/object/public/website-assets'
+
 export default function HomePage() {
   const features = [
     {
@@ -90,7 +93,10 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-rose-50 via-white to-pink-50" />
-        <div className="absolute inset-0 bg-[url('/Background_MBHC.jpeg')] bg-cover bg-center opacity-10" />
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-10"
+          style={{ backgroundImage: `url('${SUPABASE_ASSET_URL}/Background_MBHC.jpeg')` }}
+        />
         
         <div className="relative z-10 container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto space-y-8">
@@ -188,17 +194,17 @@ export default function HomePage() {
             {[
               {
                 title: "Ethereal Wedding Gowns",
-                image: "/Juliette_MBHC.jpg",
+                image: `${SUPABASE_ASSET_URL}/Juliette_MBHC.jpg`,
                 description: "Timeless elegance for your perfect day"
               },
               {
                 title: "Evening Glamour",
-                image: "/MBHC_logo.jpeg",
+                image: `${SUPABASE_ASSET_URL}/MBHC_logo.jpeg`,
                 description: "Sophisticated designs for special occasions"
               },
               {
                 title: "Cocktail Couture",
-                image: "/Background_MBHC.jpeg",
+                image: `${SUPABASE_ASSET_URL}/Background_MBHC.jpeg`,
                 description: "Chic styles for intimate celebrations"
               }
             ].map((item, index) => (

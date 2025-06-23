@@ -2,6 +2,9 @@ import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import Image from 'next/image'
 
+const SUPABASE_ASSET_URL =
+  'https://zrjthioylovvarhpelym.supabase.co/storage/v1/object/public/website-assets'
+
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -22,13 +25,23 @@ export default function ServicesPage() {
             </p>
           </div>
           <div className="relative h-80">
-            <Image src="/Juliette_MBHC.jpg" alt="Custom Design" fill className="object-cover rounded" />
+            <Image
+              src={`${SUPABASE_ASSET_URL}/Juliette_MBHC.jpg`}
+              alt="Custom Design"
+              fill
+              className="object-cover rounded"
+            />
           </div>
         </div>
 
         <div id="rentals" className="grid md:grid-cols-2 gap-8 items-center">
           <div className="order-last md:order-first relative h-80">
-            <Image src="/Background_MBHC.jpeg" alt="Dress Rentals" fill className="object-cover rounded" />
+            <Image
+              src={`${SUPABASE_ASSET_URL}/Background_MBHC.jpeg`}
+              alt="Dress Rentals"
+              fill
+              className="object-cover rounded"
+            />
           </div>
           <div className="space-y-4">
             <h2 className="font-heading text-3xl font-semibold">Dress Rentals</h2>
@@ -44,13 +57,23 @@ export default function ServicesPage() {
             <p className="text-muted-foreground">Perfect fit guaranteed for every dress.</p>
           </div>
           <div className="relative h-80">
-            <Image src="/MBHC_logo.jpeg" alt="Alterations" fill className="object-cover rounded" />
+            <Image
+              src={`${SUPABASE_ASSET_URL}/MBHC_logo.jpeg`}
+              alt="Alterations"
+              fill
+              className="object-cover rounded"
+            />
           </div>
         </div>
 
         <div id="consultation" className="grid md:grid-cols-2 gap-8 items-center">
           <div className="order-last md:order-first relative h-80">
-            <Image src="/Juliette_MBHC.jpg" alt="Consultation" fill className="object-cover rounded" />
+            <Image
+              src={`${SUPABASE_ASSET_URL}/Juliette_MBHC.jpg`}
+              alt="Consultation"
+              fill
+              className="object-cover rounded"
+            />
           </div>
           <div className="space-y-4">
             <h2 className="font-heading text-3xl font-semibold">Personal Consultation</h2>
