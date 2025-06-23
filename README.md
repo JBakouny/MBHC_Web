@@ -55,6 +55,13 @@ Before running the application you need to apply the SQL migrations in the
    supabase db push
    ```
 
+   If you prefer to run the SQL manually in the Supabase dashboard, execute the
+   migration files in chronological order:
+
+   1. `20250623063042_old_fountain.sql`
+   2. `20250623082701_comments_and_owner_features.sql`
+   3. `20250623090000_dress_price_images.sql`
+
 The first user you create will have the `client` role. To promote a user to
 `owner` or `admin`, update the `role` column in the `profiles` table using the
 Supabase dashboard or SQL editor.
