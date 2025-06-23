@@ -227,7 +227,7 @@ export default function CollectionPage() {
 
       {/* Price Range */}
       <div className="space-y-2">
-        <Label>Price Range (per day)</Label>
+        <Label>Price Range</Label>
         <div className="px-2">
           <Slider
             value={priceRange}
