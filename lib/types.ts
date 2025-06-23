@@ -147,6 +147,16 @@ export interface RentalHistory {
   client?: Profile
 }
 
+export interface Comment {
+  id: string
+  client_id: string | null
+  rating: number
+  content: string
+  approved: boolean
+  created_at: string
+  client?: Profile | null
+}
+
 export interface DressFilters {
   category?: string
   minPrice?: number

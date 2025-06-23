@@ -5,6 +5,9 @@ import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import { createClient } from '@/lib/supabase/client'
+import { Comment } from '@/lib/types'
 import { 
   Crown, 
   Sparkles, 
@@ -41,26 +44,42 @@ export default function HomePage() {
     }
   ]
 
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "Bride",
-      content: "Maria created the most beautiful wedding dress for me. The attention to detail and craftsmanship was extraordinary. I felt like a princess on my special day.",
-      rating: 5
-    },
-    {
-      name: "Emily Chen",
-      role: "Event Attendee",
-      content: "The evening gown I rented was absolutely stunning. The quality was exceptional and the service was impeccable. I received so many compliments!",
-      rating: 5
-    },
-    {
-      name: "Isabella Rodriguez",
-      role: "Mother of the Bride",
-      content: "Maria's expertise and eye for design helped me find the perfect dress for my daughter's wedding. The entire experience was wonderful.",
-      rating: 5
+  const supabase = createClient()
+  const [testimonials, setTestimonials] = useState<Comment[]>([])
+  const [userId, setUserId] = useState<string | null>(null)
+  const [content, setContent] = useState('')
+  const [rating, setRating] = useState(5)
+
+  useEffect(() => {
+    const init = async () => {
+      const { data } = await supabase
+        .from('comments')
+        .select('*, client:profiles!comments_client_id_fkey(full_name)')
+        .eq('approved', true)
+        .order('created_at', { ascending: false })
+      setTestimonials((data as any) || [])
+
+      const {
+        data: { user },
+      } = await supabase.auth.getUser()
+      setUserId(user?.id || null)
     }
-  ]
+    void init()
+  }, [supabase])
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!userId || !content.trim()) return
+    const { error } = await supabase.from('comments').insert({
+      client_id: userId,
+      content,
+      rating,
+    })
+    if (!error) {
+      setContent('')
+      setRating(5)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -227,9 +246,9 @@ export default function HomePage() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="hover-lift">
-                <CardContent className="p-8">
+          {testimonials.map((testimonial) => (
+            <Card key={testimonial.id} className="hover-lift">
+              <CardContent className="p-8">
                   <div className="flex mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
@@ -239,8 +258,7 @@ export default function HomePage() {
                     {testimonial.content}
                   </p>
                   <div>
-                    <p className="font-semibold">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                    <p className="font-semibold">{testimonial.client?.full_name || 'Anonymous'}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -248,6 +266,40 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {userId && (
+        <section className="py-12">
+          <div className="container mx-auto px-4 max-w-xl">
+            <h3 className="font-heading text-2xl font-semibold mb-4">Leave a Review</h3>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-1" htmlFor="rating">Rating</label>
+                <select
+                  id="rating"
+                  value={rating}
+                  onChange={(e) => setRating(Number(e.target.value))}
+                  className="w-full border rounded p-2 bg-background"
+                >
+                  {[1,2,3,4,5].map((n) => (
+                    <option key={n} value={n}>{n}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-1" htmlFor="comment">Comment</label>
+                <textarea
+                  id="comment"
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                  className="w-full border rounded p-2 min-h-[120px] bg-background"
+                  required
+                />
+              </div>
+              <Button type="submit">Submit</Button>
+            </form>
+          </div>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section className="py-20 bg-primary text-primary-foreground">
