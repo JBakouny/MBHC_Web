@@ -21,6 +21,30 @@
     - Secure file upload handling
 */
 
+-- Reset schema objects for a clean install
+DROP TABLE IF EXISTS dress_price_images CASCADE;
+DROP TABLE IF EXISTS comments CASCADE;
+DROP TABLE IF EXISTS rental_history CASCADE;
+DROP TABLE IF EXISTS appointments CASCADE;
+DROP TABLE IF EXISTS messages CASCADE;
+DROP TABLE IF EXISTS request_images CASCADE;
+DROP TABLE IF EXISTS custom_requests CASCADE;
+DROP TABLE IF EXISTS bookings CASCADE;
+DROP TABLE IF EXISTS dress_sizes CASCADE;
+DROP TABLE IF EXISTS dress_colors CASCADE;
+DROP TABLE IF EXISTS dress_images CASCADE;
+DROP TABLE IF EXISTS dresses CASCADE;
+DROP TABLE IF EXISTS sizes CASCADE;
+DROP TABLE IF EXISTS colors CASCADE;
+DROP TABLE IF EXISTS categories CASCADE;
+DROP TABLE IF EXISTS profiles CASCADE;
+
+DROP TYPE IF EXISTS rental_status;
+DROP TYPE IF EXISTS request_status;
+DROP TYPE IF EXISTS booking_status;
+DROP TYPE IF EXISTS dress_category;
+DROP TYPE IF EXISTS user_role;
+
 -- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
