@@ -399,7 +399,7 @@ export default function CollectionPage() {
                   <Card key={dress.id} className="overflow-hidden hover-lift group">
                     <div className="relative aspect-[3/4] overflow-hidden">
                       <Image
-                        src={dress.images?.[0]?.image_url || 'https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg'}
+                        src={dress.images?.[0]?.image_url || '/Juliette_MBHC.jpg'}
                         alt={dress.name}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-110"

@@ -22,13 +22,13 @@ export default function ServicesPage() {
             </p>
           </div>
           <div className="relative h-80">
-            <Image src="https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg" alt="Custom Design" fill className="object-cover rounded" />
+            <Image src="/Juliette_MBHC.jpg" alt="Custom Design" fill className="object-cover rounded" />
           </div>
         </div>
 
         <div id="rentals" className="grid md:grid-cols-2 gap-8 items-center">
           <div className="order-last md:order-first relative h-80">
-            <Image src="https://images.pexels.com/photos/985635/pexels-photo-985635.jpeg" alt="Dress Rentals" fill className="object-cover rounded" />
+            <Image src="/Background_MBHC.jpeg" alt="Dress Rentals" fill className="object-cover rounded" />
           </div>
           <div className="space-y-4">
             <h2 className="font-heading text-3xl font-semibold">Dress Rentals</h2>
@@ -44,13 +44,13 @@ export default function ServicesPage() {
             <p className="text-muted-foreground">Perfect fit guaranteed for every dress.</p>
           </div>
           <div className="relative h-80">
-            <Image src="https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg" alt="Alterations" fill className="object-cover rounded" />
+            <Image src="/MBHC_logo.jpeg" alt="Alterations" fill className="object-cover rounded" />
           </div>
         </div>
 
         <div id="consultation" className="grid md:grid-cols-2 gap-8 items-center">
           <div className="order-last md:order-first relative h-80">
-            <Image src="https://images.pexels.com/photos/1488467/pexels-photo-1488467.jpeg" alt="Consultation" fill className="object-cover rounded" />
+            <Image src="/Juliette_MBHC.jpg" alt="Consultation" fill className="object-cover rounded" />
           </div>
           <div className="space-y-4">
             <h2 className="font-heading text-3xl font-semibold">Personal Consultation</h2>
