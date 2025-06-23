@@ -2,6 +2,9 @@ import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import Image from 'next/image'
 
+const SUPABASE_ASSET_URL =
+  'https://zrjthioylovvarhpelym.supabase.co/storage/v1/object/public/website-assets'
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -24,7 +27,12 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="relative h-80">
-            <Image src="/MBHC_logo.jpeg" alt="Maria Badari" fill className="object-contain" />
+            <Image
+              src={`${SUPABASE_ASSET_URL}/MBHC_logo.jpeg`}
+              alt="Maria Badari"
+              fill
+              className="object-contain"
+            />
           </div>
         </div>
       </section>

@@ -33,6 +33,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { toast } from 'sonner'
 
+const SUPABASE_ASSET_URL =
+  'https://zrjthioylovvarhpelym.supabase.co/storage/v1/object/public/website-assets'
+
 export default function CollectionPage() {
   const [dresses, setDresses] = useState<Dress[]>([])
   const [categories, setCategories] = useState<Category[]>([])
@@ -399,7 +402,7 @@ export default function CollectionPage() {
                   <Card key={dress.id} className="overflow-hidden hover-lift group">
                     <div className="relative aspect-[3/4] overflow-hidden">
                       <Image
-                        src={dress.images?.[0]?.image_url || 'https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg'}
+                        src={dress.images?.[0]?.image_url || `${SUPABASE_ASSET_URL}/Juliette_MBHC.jpg`}
                         alt={dress.name}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
