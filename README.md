@@ -30,7 +30,36 @@ DATABASE_URL=postgresql://postgres:your-password@db.zrjthioylovvarhpelym.supabas
 These values should **not** be committed to version control. They are only
 required for features that access the database directly or run migrations.
 
-Then run the development server:
+### Database setup
+
+Before running the application you need to apply the SQL migrations in the
+`supabase/migrations` directory to your Supabase project.
+
+1. Install the [Supabase CLI](https://supabase.com/docs/guides/cli) if you don't
+   already have it:
+
+   ```bash
+   npm install -g supabase
+   ```
+
+2. Authenticate the CLI and link it to your project:
+
+   ```bash
+   supabase login
+   supabase link --project-ref <your-project-ref>
+   ```
+
+3. Push the migrations to create all required tables:
+
+   ```bash
+   supabase db push
+   ```
+
+The first user you create will have the `client` role. To promote a user to
+`owner` or `admin`, update the `role` column in the `profiles` table using the
+Supabase dashboard or SQL editor.
+
+After the database is set up, run the development server:
 
 ```bash
 npm run dev
