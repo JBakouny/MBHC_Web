@@ -89,7 +89,7 @@ export default function HomePage() {
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-rose-50 via-white to-pink-50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FBEFA2] via-white to-[#F6CD31]" />
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg')] bg-cover bg-center opacity-10" />
         
         <div className="relative z-10 container mx-auto px-4 text-center">
