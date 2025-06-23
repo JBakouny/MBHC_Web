@@ -236,7 +236,7 @@ export default function HomePage() {
                     ))}
                   </div>
                   <p className="text-muted-foreground mb-6 leading-relaxed italic">
-                    "{testimonial.content}"
+                    {testimonial.content}
                   </p>
                   <div>
                     <p className="font-semibold">{testimonial.name}</p>
