@@ -1,5 +1,6 @@
 
 import { createBrowserClient } from "@supabase/ssr";
+import '../setupProxy';
 
 export const createClient = () =>
   createBrowserClient(

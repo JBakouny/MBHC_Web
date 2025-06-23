@@ -1,6 +1,7 @@
 
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import '../setupProxy';
 
 export const createClient = (cookieStore: ReturnType<typeof cookies>) => {
   return createServerClient(

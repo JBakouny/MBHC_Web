@@ -36,6 +36,7 @@ export default function LoginPage() {
       })
 
       if (error) {
+        console.error('Supabase login error:', error)
         setError(error.message)
         return
       }

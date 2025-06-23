@@ -86,6 +86,7 @@ export default function HomePage() {
       setContent('')
       setRating(5)
     } else {
+      console.error('Submit review error:', error)
       toast.error('Failed to submit review')
     }
   }
