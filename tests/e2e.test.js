@@ -1,6 +1,9 @@
 const {Builder, By, until} = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 const { spawn } = require('child_process');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
 
 function wait(ms) {
   return new Promise(res => setTimeout(res, ms));
@@ -14,6 +17,8 @@ async function run() {
   options.addArguments('--headless=new');
   options.addArguments('--no-sandbox');
   options.addArguments('--disable-dev-shm-usage');
+  const userDataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'chrome-user-data-'));
+  options.addArguments(`--user-data-dir=${userDataDir}`);
 
   const driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
 
